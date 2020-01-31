@@ -10,12 +10,12 @@ declare
 	cheapest_gpa varchar2(32);
 	cheapest_gma varchar2(32);
 begin
-	select PRODUCT_NAME into cheapest_gpa from PIES where ROWNUM <= 1 and MAKER_TYPE = 'ДЕДУШКА' order by PRICE asc;
-	select PRODUCT_NAME into cheapest_gma from PIES where ROWNUM <= 1 and MAKER_TYPE = 'БАБУШКА' order by PRICE asc;
+	select PRODUCT_NAME into cheapest_gpa from PIES where ROWNUM <= 1 and MAKER_TYPE = 'дедушка' order by PRICE asc;
+	select PRODUCT_NAME into cheapest_gma from PIES where ROWNUM <= 1 and MAKER_TYPE = 'бабушка' order by PRICE asc;
 	if cheapest_gpa < cheapest_gma then
-		dbms_output.put_line('Самый дешёвый продукт делает ДЕДУШКА');
+		dbms_output.put_line('Самый дешёвый продукт делает дедушка');
 	elsif cheapest_gpa > cheapest_gma
-		dbms_output.put_line('Самый дешёвый продукт делает БАБУШКА');
+		dbms_output.put_line('Самый дешёвый продукт делает бабушка');
 	elsif cheapest_gpa = cheapest_gma
 		dbms_output.put_line('Минимальные цены равны');
 	else
@@ -28,8 +28,8 @@ declare
 	avg_prise_pies number(5);
 	avg_prise_panc number(5);
 begin
-	select avg(PRICE) into avg_prise_pies from PIES;
-	select avg(PRICE) into avg_prise_panc from PANCAKES;
+	select avg(PRICE) into avg_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
+	select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
 	if avg_prise_pies > avg_prise_panc then
 		dbms_output.put_line('В среднем, блины дешевле пирожков на ',ABS(avg_prise_pies-avg_prise_panc),' руб');
 	elsif avg_prise_panc >= avg_prise_pies then
