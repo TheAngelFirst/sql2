@@ -9,7 +9,7 @@ case
 	when PRICE < 100 then 'Халява'
 	when PRICE < 200 then 'Хорошая цена'
 	when PRICE >= 200 then 'Дорого'
-end as 'COMMENT'
+end as "COMMENT"
 from PIES
 where PRODUCT_NAME = 'блин';
 
@@ -17,12 +17,15 @@ where PRODUCT_NAME = 'блин';
 select case 
 	when PRODUCT_NAME = 'блин' then 'пирожок'
 	when PRODUCT_NAME = 'пирожок' then 'блин'
-end as 'PRODUCT_NAME', FILLING, PRICE 
-from PIES;
+end as "PRODUCT_NAME", FILLING, PRICE 
+from PIES 
+where PRODUCT_NAME = 'блин';
 
 select T1.PRODUCT_NAME, T2.FILLING, T2.PRICE
-from PIES 'T1' inner join PIE 'T2' 
-on T1.PRODUCT_NAME != T2.PRODUCT_NAME;
+from PIES "T1" inner join PIES "T2" 
+on T1.FILLING = T2.FILLING and T2.PRODUCT_NAME != T1.PRODUCT_NAME
+where T1.PRODUCT_NAME = 'пирожок';
+select * from PIES;
 
 --3.Увеличить цену пирожков на 33%, уменьшить цену блинов на 33%. Можно выполнить только одну команду update
 update PIES set PRICE = PRICE * case 

@@ -17,12 +17,13 @@ declare
 begin
 	select avg(PRICE) into avg_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
 	select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
-	while avg_prise_pies < avg_prise_panc loop
-		update PIES set PRICE = PRICE * 1.2 where PRODUCT_NAME = 'пирожок';
-		select avg(PRICE) into avg_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
-		select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
+  while avg_prise_pies < avg_prise_panc loop
+		update PIES set PRICE = ROUND(PRICE * 1.2) where PRODUCT_NAME = 'пирожок';
+    select avg(PRICE) into avg_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
+    select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
 	end loop;
 end;
+
 --3.Дополнить цикл из задачи № 2 условием, по которому выполнение цикла прекратиться в случае, если максимальная цена на пирожок превысит максимальную цену на блин
 declare
 	avg_prise_pies number(5);
@@ -34,12 +35,12 @@ begin
 	select max(PRICE) into max_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
 	select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
 	select max(PRICE) into max_prise_panc from PIES where PRODUCT_NAME = 'блин';
-	while avg_prise_pies < avg_prise_panc or max_prise_pies <= max_prise_panc
-	loop
-		update PIES set PRICE = PRICE * 1.2 where PRODUCT_NAME = 'пирожок';
-		select avg(PRICE) into avg_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
-		select max(PRICE) into max_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
-		select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
-		select max(PRICE) into max_prise_panc from PIES where PRODUCT_NAME = 'блин';
-	end loop;
+  while avg_prise_pies < avg_prise_panc and max_prise_pies <= max_prise_panc 
+  loop
+	update PIES set PRICE = ROUND(PRICE * 1.2) where PRODUCT_NAME = 'пирожок';
+    select avg(PRICE) into avg_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
+    select max(PRICE) into max_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
+    select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
+    select max(PRICE) into max_prise_panc from PIES where PRODUCT_NAME = 'блин';
+  end loop;
 end;

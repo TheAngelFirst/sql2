@@ -5,6 +5,7 @@
 4.Используя with … as, создать табличное выражение, содержащее все записи, с ценой товара больше 70. С помощью select отобразить всё содержимое этого выражения.
 */
 --1.В разделе declare объявить переменную mystr, положить в неё значение «Hello, World!». Затем вывести на экран, используя dbms_output.put_line();
+set serveroutput on format wraped;
 declare
 	mystr varchar2(32):='Hello, World!';
 begin

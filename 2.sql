@@ -14,9 +14,9 @@ begin
 	select PRODUCT_NAME into cheapest_gma from PIES where ROWNUM <= 1 and MAKER_TYPE = 'бабушка' order by PRICE asc;
 	if cheapest_gpa < cheapest_gma then
 		dbms_output.put_line('Самый дешёвый продукт делает дедушка');
-	elsif cheapest_gpa > cheapest_gma
+	elsif cheapest_gpa > cheapest_gma then
 		dbms_output.put_line('Самый дешёвый продукт делает бабушка');
-	elsif cheapest_gpa = cheapest_gma
+	elsif cheapest_gpa = cheapest_gma then
 		dbms_output.put_line('Минимальные цены равны');
 	else
 		dbms_output.put_line('1');
@@ -31,7 +31,7 @@ begin
 	select avg(PRICE) into avg_prise_pies from PIES where PRODUCT_NAME = 'пирожок';
 	select avg(PRICE) into avg_prise_panc from PIES where PRODUCT_NAME = 'блин';
 	if avg_prise_pies > avg_prise_panc then
-		dbms_output.put_line('В среднем, блины дешевле пирожков на ',ABS(avg_prise_pies-avg_prise_panc),' руб');
+		dbms_output.put_line('В среднем, блины дешевле пирожков на '||ABS(avg_prise_pies-avg_prise_panc)||' руб');
 	elsif avg_prise_panc >= avg_prise_pies then
 		dbms_output.put_line('блины стоят не меньше пирожков');
 	else
