@@ -10,12 +10,12 @@ CREATE TABLE PIES
 );
 INSERT INTO PIES (PRODUCT_NAME, FILLING, MAKER_ID, MAKER_TYPE, PRICE, AVAILABLE, PROD_DATE) 
 VALUES 
-	('блин', 'клубника', 5, 'дедушка', 159, 20, DATE '2019-09-23'),
-  	('блин', 'малина', 4, 'дедушка', 446, 18, DATE '2019-09-23'),
-	('блин', 'черника', 4, 'дедушка', 1022, 19, DATE '2019-09-23'),
-	('пирожок', 'клубника', 3, 'бабушка', 137, 17, DATE '2019-09-23'),
-	('пирожок', 'малина', 1, 'бабушка', 386, 15, DATE '2019-09-23'),
-	('пирожок', 'черника', 3, 'бабушка', 883, 16, DATE '2019-09-23');
+	select 'блин', 'клубника', 5, 'дедушка', 159, 20, DATE '2019-09-23' from DUAL union all
+  	select 'блин', 'малина', 4, 'дедушка', 446, 18, DATE '2019-09-23' from DUAL union all
+	select 'блин', 'черника', 4, 'дедушка', 1022, 19, DATE '2019-09-23' from DUAL union all
+	select 'пирожок', 'клубника', 3, 'бабушка', 137, 17, DATE '2019-09-23' from DUAL union all
+	select 'пирожок', 'малина', 1, 'бабушка', 386, 15, DATE '2019-09-23' from DUAL union all
+	select 'пирожок', 'черника', 3, 'бабушка', 883, 16, DATE '2019-09-23' from DUAL;
 	
 CREATE TABLE PRODUCT_CONF
 (
