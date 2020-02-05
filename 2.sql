@@ -25,14 +25,14 @@ end;
 
 --2.Если средняя цена на блины меньше, чем средняя на пирожки, вывести сообщение: «В среднем, блины дешевле пирожков на X руб», где X – абсолютное значение разницы между средней ценой пирожка и средней ценой блина. Если средняя цена на блины больше или равна средней цены на пирожки, вывести сообщение: «блины стоят не меньше пирожков».
 declare
-	avg_prise_PIES_SHAK number(5);
+	avg_prise_pie number(5);
 	avg_prise_panc number(5);
 begin
-	select avg(PRICE) into avg_prise_PIES_SHAK from PIES_SHAK where PRODUCT_NAME = 'пирожок';
+	select avg(PRICE) into avg_prise_pie from PIES_SHAK where PRODUCT_NAME = 'пирожок';
 	select avg(PRICE) into avg_prise_panc from PIES_SHAK where PRODUCT_NAME = 'блин';
-	if avg_prise_PIES_SHAK > avg_prise_panc then
-		dbms_output.put_line('В среднем, блины дешевле пирожков на '||ABS(avg_prise_PIES_SHAK-avg_prise_panc)||' руб');
-	elsif avg_prise_panc >= avg_prise_PIES_SHAK then
+	if avg_prise_pie > avg_prise_panc then
+		dbms_output.put_line('В среднем, блины дешевле пирожков на '||ABS(avg_prise_pie-avg_prise_panc)||' руб');
+	elsif avg_prise_panc >= avg_prise_pie then
 		dbms_output.put_line('блины стоят не меньше пирожков');
 	else
 		dbms_output.put_line('1');
