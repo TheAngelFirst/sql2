@@ -29,9 +29,7 @@ begin
 end;
 
 --4.Используя with … as, создать табличное выражение, содержащее все записи, с ценой товара больше 70. С помощью select отобразить всё содержимое этого выражения.
-with ABC as
-(select * 
-from PIES
-where PRICE > 70)
-
-select * from ABC; -- может понадобиться заменить ; на \\
+with ABC as (
+select * from PIES_SHAK where PRICE > 70
+)
+select * from ABC;

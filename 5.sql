@@ -15,13 +15,13 @@ end TheNumbers;
 select TheNumbers(7) from DUAL;
 
 --2. Создать произвольную таблицу и написать процедуру, удаляющую её
-CREATE TABLE PIES_ARCH as select * from PIES;
+CREATE TABLE PIES_SHAK_ARCH as select * from PIES_SHAK;
 /
-create or replace procedure drop_table_PIES_ARCH
+create or replace procedure drop_table_PIES_SHAK_ARCH
 is
 begin
-   execute immediate 'drop table PIES_arch';
-end drop_table_PIES_ARCH;
+   execute immediate 'drop table PIES_SHAK_arch';
+end drop_table_PIES_SHAK_ARCH;
 
 --3. Создать функцию, которая будет инвертировать введённый текст длинной до 128 символов.
 create or replace function ReplaceText(text in varchar2) return varchar2
@@ -37,3 +37,7 @@ begin
 	end loop;
 	return res;
 end ReplaceText;
+/
+select ReplaceText('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna enim, vulputate ac turpis sit amet, laoreet pretium posuere.') REPALACED_TEXT from DUAL
+union
+select ReplaceText('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna enim, vulputate ac turpis sit amet, laoreet pretium posuere') from DUAL;
